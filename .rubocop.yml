@@ -1,0 +1,12 @@
+# This is .rubocop.yml in ~/
+AllCops:
+  NewCops: enable
+
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+
+Style/FrozenStringLiteralComment:
+  EnforcedStyle: never
+
+#
+# See https://docs.rubocop.org/rubocop/configuration
