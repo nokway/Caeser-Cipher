@@ -1,8 +1,12 @@
+# Class for making a caeser shift to a message
 class CaesarCipher
+  attr_accessor :expected_letter, :message, :letters_array
+
   def initialize
     @letters_array = %w[A B C D E F G H I J K L M N O P Q R S T
                         U V W X Y Z]
     @expected_letter = ""
+    @message = ""
   end
 
   def index(letters_array, index)
@@ -17,6 +21,10 @@ class CaesarCipher
     self.expected_letter = less26(index, amount) || more26(index, amount)
   end
 
+  def finished_encoding?(new_array, message)
+    new_array.length = message.length
+  end
+
   def less26(index, amount)
     return unless index + amount < 26
 
@@ -28,6 +36,12 @@ class CaesarCipher
   end
 
   def play
+  end
+
+  private
+
+  def player_input
+    self.message = gets.chomp
   end
 end
 
