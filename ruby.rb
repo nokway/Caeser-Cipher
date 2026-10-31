@@ -5,52 +5,10 @@ class CaesarCipher
   def initialize
     @letters_array = %w[A B C D E F G H I J K L M N O P Q R S T
                         U V W X Y Z]
-    @expected_letter = ""
-    @message = ""
-    @older_letter = ""
-    @new_message = ""
-  end
-
-  def index(letters_array, index)
-    self.index = letters_array.index(index)
-  end
-
-  def 
-
-  def pushletter(expected_letter, new_array)
-    new_array.push(expected_letter)
-  end
-
-  def new_index()
-    loop do
-      @old_letter = includes()
-    end
-  end
-
-  def expectedletter(amount, index)
-    self.expected_letter = less26(index, amount) || more26(index, amount)
-  end
-
-  def finished_encoding?(new_array, message)
-    new_array.length = message.length
   end
 
   def includes(letter)
     letter if letters_array.include?(letter)
-  end
-
-  def less26(index, amount)
-    return unless index + amount < 26
-
-    @letters_array[index + amount]
-  end
-
-  def more26(index, amount)
-    @letters_array[(index + amount) - 26]
-  end
-
-  def shift(message)
-    puts "Your shifted value is: "
   end
 
   private
