@@ -1,20 +1,30 @@
 # Class for making a caeser shift to a message
 class CaesarCipher
-  attr_accessor :expected_letter, :message, :letters_array
+  attr_accessor :expected_letter, :message, :letters_array, :old_letter
 
   def initialize
     @letters_array = %w[A B C D E F G H I J K L M N O P Q R S T
                         U V W X Y Z]
     @expected_letter = ""
     @message = ""
+    @older_letter = ""
+    @new_message = ""
   end
 
   def index(letters_array, index)
     self.index = letters_array.index(index)
   end
 
+  def 
+
   def pushletter(expected_letter, new_array)
     new_array.push(expected_letter)
+  end
+
+  def new_index()
+    loop do
+      @old_letter = includes()
+    end
   end
 
   def expectedletter(amount, index)
@@ -23,6 +33,10 @@ class CaesarCipher
 
   def finished_encoding?(new_array, message)
     new_array.length = message.length
+  end
+
+  def includes(letter)
+    letter if letters_array.include?(letter)
   end
 
   def less26(index, amount)
@@ -35,7 +49,8 @@ class CaesarCipher
     @letters_array[(index + amount) - 26]
   end
 
-  def play
+  def shift(message)
+    puts "Your shifted value is: "
   end
 
   private
