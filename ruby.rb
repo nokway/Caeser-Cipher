@@ -1,14 +1,29 @@
 # Class for making a caeser shift to a message
 class CaesarCipher
-  attr_accessor :expected_letter, :message, :letters_array, :old_letter
+  attr_accessor :letters_array, :index
 
   def initialize
     @letters_array = %w[A B C D E F G H I J K L M N O P Q R S T
                         U V W X Y Z]
+    @index = 0
   end
 
   def includes(letter)
     letter if letters_array.include?(letter)
+  end
+
+  def get_index(array, letter)
+    array.index(letter)
+  end
+
+  def get_new_pos(array, current_index, amount)
+    array[current_index + amount]
+  end
+
+  def shift(letter, amount)
+    @index = get_index(letters_array, letter)
+    get_new_pos(letters_array, index, amount)
+    # Returns expected character after shift
   end
 
   private
