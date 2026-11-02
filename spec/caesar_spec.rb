@@ -44,6 +44,15 @@ describe CaesarCipher do
       end
     end
   end
+
+  describe "#shift loop" do
+    subject(:caesar_loop) { described_class.new }
+
+    context "returns full word" do
+      full_word = caesar_loop.shift_loop("hello", 0)
+      expect(full_word).to eq("hello")
+    end
+  end
 end
 
 # Check if item is present in the array of letters

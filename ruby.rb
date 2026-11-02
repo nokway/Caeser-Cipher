@@ -1,11 +1,14 @@
 # Class for making a caeser shift to a message
 class CaesarCipher
-  attr_accessor :letters_array, :index
+  attr_accessor :letters_array, :index, :word_chars, :char, :shifted_array
 
   def initialize
     @letters_array = %w[A B C D E F G H I J K L M N O P Q R S T
                         U V W X Y Z]
     @index = 0
+    @word_chars = ""
+    @char = ""
+    @shifted_array = []
   end
 
   def includes(letter)
@@ -16,6 +19,10 @@ class CaesarCipher
     array.index(letter)
   end
 
+  def finshed?(chars_array, word)
+    true if chars_array.length == word.chars.length
+  end
+
   def get_new_pos(array, current_index, amount)
     array[current_index + amount] if current_index + amount <= 26
     array[current_index + amount - 26] # if it exceeds 26, check the other branch for the calculation
@@ -24,7 +31,17 @@ class CaesarCipher
   def shift(letter, amount)
     @index = get_index(letters_array, letter)
     get_new_pos(letters_array, index, amount)
-    # Returns expected character after shift
+  end
+
+  def shift_loop(word, amount)
+    @word_chars = word.chars.upcase
+    counter = 0
+    until finished?(word_chars, word)
+      shifted_array.push(shift(word_chars[counter], amount))
+      counter += 1
+    end
+
+    puts "Shifted word: #{shifted_array.join}"
   end
 
   private
