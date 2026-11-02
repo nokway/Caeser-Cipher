@@ -23,9 +23,24 @@ describe CaesarCipher do
         allow(caesar_shift).to receive(:get_index).and_return(7)
       end
 
-      it "returns the correct letter in the shifted index" do
+      it "returns the correct letter in shift 0" do
         shifted_letter = caesar_shift.shift("h", 0)
         expect(shifted_letter).to eq("H")
+      end
+    end
+
+    context "when shift causes index greater than 26" do
+      subject(:caesar_shift) { described_class.new }
+      let(:array) { double("index_array") }
+      before do
+        allow(array).to receive(:index)
+        allow(caesar_shift).to receive(:get_index).and_return(22)
+        # is 23
+      end
+
+      it "returns the correct letter in the shift 20" do
+        shifted_letter = caesar_shift.shift("W", 5)
+        expect(shifted_letter).to eq("B")
       end
     end
   end
@@ -33,3 +48,4 @@ end
 
 # Check if item is present in the array of letters
 # returns the correct letter according to shift
+#

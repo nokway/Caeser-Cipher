@@ -17,7 +17,8 @@ class CaesarCipher
   end
 
   def get_new_pos(array, current_index, amount)
-    array[current_index + amount]
+    array[current_index + amount] if current_index + amount <= 26
+    array[current_index + amount - 26] # if it exceeds 26, check the other branch for the calculation
   end
 
   def shift(letter, amount)
