@@ -65,3 +65,6 @@ end
 #   end
 #   new_array.join
 # end
+
+#  Things todo:
+#  Add support for like lower and upper, and special symbols case
