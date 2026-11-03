@@ -46,11 +46,13 @@ describe CaesarCipher do
   end
 
   describe "#shift loop" do
-    subject(:caesar_loop) { described_class.new }
+    context "when given a shift 0" do
+      subject(:caesar_loop) { described_class.new }
 
-    context "returns full word" do
-      full_word = caesar_loop.shift_loop("hello", 0)
-      expect(full_word).to eq("hello")
+      it "returns full word " do
+        full_word = caesar_loop.shift_loop("hello", 0)
+        expect(full_word).to eq("hello")
+      end
     end
   end
 end

@@ -1,6 +1,6 @@
 # Class for making a caeser shift to a message
 class CaesarCipher
-  attr_accessor :letters_array, :index, :word_chars, :char, :shifted_array
+  attr_accessor :letters_array, :index, :word_chars, :char, :shifted_array, :full_word
 
   def initialize
     @letters_array = %w[A B C D E F G H I J K L M N O P Q R S T
@@ -9,6 +9,7 @@ class CaesarCipher
     @word_chars = ""
     @char = ""
     @shifted_array = []
+    @full_word = ""
   end
 
   def includes(letter)
@@ -34,14 +35,15 @@ class CaesarCipher
   end
 
   def shift_loop(word, amount)
-    @word_chars = word.chars.upcase
+    @word_chars = word.upcase.chars
     counter = 0
     until finished?(word_chars, word)
       shifted_array.push(shift(word_chars[counter], amount))
       counter += 1
     end
 
-    puts "Shifted word: #{shifted_array.join}"
+    @full_word = shifted_array.join
+    full_word
   end
 
   private
