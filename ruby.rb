@@ -20,7 +20,7 @@ class CaesarCipher
     array.index(letter)
   end
 
-  def finshed?(chars_array, word)
+  def finished?(chars_array, word)
     true if chars_array.length == word.chars.length
   end
 
@@ -70,3 +70,4 @@ end
 
 #  Things todo:
 #  Add support for like lower and upper, and special symbols case
+# TODO: FIX THIS

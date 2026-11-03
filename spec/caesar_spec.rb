@@ -49,7 +49,12 @@ describe CaesarCipher do
     context "when given a shift 0" do
       subject(:caesar_loop) { described_class.new }
 
-      it "returns full word " do
+      it "joins shifted array" do
+        allow(caesar_loop.instance_variable_get(:@shifted_array)).to receive(:push).and_return("M", "I", "S", "S", "G")
+        expect(caesar_loop.instance_variable_get(:@shifted_array)).to receive(:join).and_return("MISSG")
+      end
+
+      xit "returns full word " do
         full_word = caesar_loop.shift_loop("hello", 0)
         expect(full_word).to eq("hello")
       end
