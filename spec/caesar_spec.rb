@@ -48,10 +48,14 @@ describe CaesarCipher do
   describe "#shift loop" do
     context "when given a shift 0" do
       subject(:caesar_loop) { described_class.new }
+      # let(:word) { double("ye", upcase: "YE", chars: %w[Y E]) }
+      it "makes the instance variable word chars" do
+        # DO THIS
+      end
 
-      it "joins shifted array" do
-        allow(caesar_loop.instance_variable_get(:@shifted_array)).to receive(:push).and_return("M", "I", "S", "S", "G")
-        expect(caesar_loop.instance_variable_get(:@shifted_array)).to receive(:join).and_return("MISSG")
+      it "adds new values to shifted array" do
+        expect(caesar_loop).to receive(:finished?)
+        expect { caesar_loop.shift_loop("eq", 0) }.to change { caesar_loop.shifted_array.length }.by(2)
       end
 
       xit "returns full word " do
