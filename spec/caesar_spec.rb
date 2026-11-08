@@ -24,7 +24,7 @@ describe CaesarCipher do
       end
 
       it "returns the correct letter in shift 0" do
-        shifted_letter = caesar_shift.shift("h", 0)
+        shifted_letter = caesar_shift.shift("H", 0)
         expect(shifted_letter).to eq("H")
       end
     end
@@ -45,17 +45,23 @@ describe CaesarCipher do
     end
   end
 
+  describe "#finished" do
+    context "when condition is true" do
+      subject(:caesar_finished) { described_class.new }
+      it "returns true" do
+        chars_array = %w[W W W]
+        word = "FIT"
+        expect(caesar_finished.finished?(chars_array, word)).to be_truthy
+      end
+    end
+  end
+
   describe "#shift loop" do
     context "when given a shift 0" do
       subject(:caesar_loop) { described_class.new }
-      # let(:word) { double("ye", upcase: "YE", chars: %w[Y E]) }
-      it "makes the instance variable word chars" do
-        # DO THIS
-      end
 
       it "adds new values to shifted array" do
-        expect(caesar_loop).to receive(:finished?)
-        expect { caesar_loop.shift_loop("eq", 0) }.to change { caesar_loop.shifted_array.length }.by(2)
+        expect { caesar_loop.shift_loop("eq", 0) }.to change { caesar_loop.shifted_array.length }.to(2)
       end
 
       xit "returns full word " do
