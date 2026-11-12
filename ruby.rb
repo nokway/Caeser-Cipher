@@ -22,7 +22,7 @@ class CaesarCipher
     array.index(letter)
   end
 
-  def finished?(chars_array, word)
+  def finished?(shifted_array, word)
     true if shifted_array.length == word.chars.length
   end
 
@@ -39,7 +39,7 @@ class CaesarCipher
   def shift_loop(word, amount)
     @word_chars = word.upcase.chars
     counter = 0
-    until finished?(word_chars, word)
+    until finished?(shifted_array, word)
       shifted_array.push(shift(word_chars[counter], amount))
       counter += 1
     end

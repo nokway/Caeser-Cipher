@@ -49,7 +49,7 @@ describe CaesarCipher do
     context "when condition is true" do
       subject(:caesar_finished) { described_class.new }
       it "returns true" do
-        chars_array = %w[W W W]
+        chars_array = %w[O R T]
         word = "FIT"
         expect(caesar_finished.finished?(chars_array, word)).to be_truthy
       end
@@ -64,7 +64,7 @@ describe CaesarCipher do
         expect { caesar_loop.shift_loop("eq", 0) }.to change { caesar_loop.shifted_array.length }.to(2)
       end
 
-      xit "returns full word " do
+      it "returns full word " do
         full_word = caesar_loop.shift_loop("hello", 0)
         expect(full_word).to eq("hello")
       end
