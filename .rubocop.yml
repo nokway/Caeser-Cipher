@@ -8,5 +8,7 @@ Style/StringLiterals:
 Style/FrozenStringLiteralComment:
   EnforcedStyle: never
 
+plugins: rubocop-rspec
+
 #
 # See https://docs.rubocop.org/rubocop/configuration

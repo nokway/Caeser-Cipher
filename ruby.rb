@@ -73,6 +73,3 @@ end
 #  Things todo:
 #  Add support for like lower and upper, and special symbols case
 # TODO: FIX THIS
-
-newclass = CaesarCipher.new
-newclass.shift_loop("poop", 2)

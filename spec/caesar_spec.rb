@@ -5,6 +5,7 @@ require_relative "../ruby"
 describe CaesarCipher do
   describe "#verify input" do
     subject(:caesar_verify) { described_class.new }
+
     context "when input is valid" do
       it "returns the given letter" do
         valid_letter = "R"
@@ -16,7 +17,9 @@ describe CaesarCipher do
 
   describe "#get new position" do
     subject(:caesar_shift) { described_class.new }
+
     let(:array) { double("index_array") }
+
     context "when shift is 0" do
       before do
         allow(array).to receive(:index)
@@ -31,10 +34,13 @@ describe CaesarCipher do
 
     context "when shift causes index greater than 26" do
       subject(:caesar_shift) { described_class.new }
+
       let(:array) { double("index_array") }
+
       before do
         allow(array).to receive(:index)
         allow(caesar_shift).to receive(:get_index).and_return(22)
+        # ask in odin why this is wrong
         # is 23
       end
 
@@ -48,6 +54,7 @@ describe CaesarCipher do
   describe "#finished" do
     context "when condition is true" do
       subject(:caesar_finished) { described_class.new }
+
       it "returns true" do
         chars_array = %w[O R T]
         word = "FIT"
@@ -64,7 +71,7 @@ describe CaesarCipher do
         expect { caesar_loop.shift_loop("eq", 0) }.to change { caesar_loop.shifted_array.length }.to(2)
       end
 
-      it "returns full word " do
+      it "returns full word" do
         full_word = caesar_loop.shift_loop("hello", 0)
         expect(full_word).to eq("hello")
       end
