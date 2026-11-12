@@ -1,4 +1,6 @@
 # Class for making a caeser shift to a message
+require "byebug"
+
 class CaesarCipher
   attr_accessor :letters_array, :index, :word_chars, :char, :shifted_array, :full_word
 
@@ -21,7 +23,7 @@ class CaesarCipher
   end
 
   def finished?(chars_array, word)
-    true if chars_array.length == word.chars.length
+    true if shifted_array.length == word.chars.length
   end
 
   def get_new_pos(array, current_index, amount)
@@ -43,7 +45,7 @@ class CaesarCipher
     end
 
     @full_word = shifted_array.join
-    full_word
+    p full_word
   end
 
   private
@@ -71,3 +73,6 @@ end
 #  Things todo:
 #  Add support for like lower and upper, and special symbols case
 # TODO: FIX THIS
+
+newclass = CaesarCipher.new
+newclass.shift_loop("poop", 2)
