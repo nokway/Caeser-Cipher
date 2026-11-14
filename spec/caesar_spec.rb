@@ -2,7 +2,7 @@ require_relative "../ruby"
 
 # Test 1: Pushes expected letter:  new_array.push(expected_letter)
 
-describe CaesarCipher do
+describe Caesar do
   describe "#verify input" do
     subject(:caesar_verify) { described_class.new }
 
@@ -18,14 +18,7 @@ describe CaesarCipher do
   describe "#get new position" do
     subject(:caesar_shift) { described_class.new }
 
-    let(:array) { double("index_array") }
-
     context "when shift is 0" do
-      before do
-        allow(array).to receive(:index)
-        allow(caesar_shift).to receive(:get_index).and_return(7)
-      end
-
       it "returns the correct letter in shift 0" do
         shifted_letter = caesar_shift.shift("H", 0)
         expect(shifted_letter).to eq("H")
@@ -34,15 +27,6 @@ describe CaesarCipher do
 
     context "when shift causes index greater than 26" do
       subject(:caesar_shift) { described_class.new }
-
-      let(:array) { double("index_array") }
-
-      before do
-        allow(array).to receive(:index)
-        allow(caesar_shift).to receive(:get_index).and_return(22)
-        # ask in odin why this is wrong
-        # is 23
-      end
 
       it "returns the correct letter in the shift 20" do
         shifted_letter = caesar_shift.shift("W", 5)
@@ -58,7 +42,7 @@ describe CaesarCipher do
       it "returns true" do
         chars_array = %w[O R T]
         word = "FIT"
-        expect(caesar_finished.finished?(chars_array, word)).to be_truthy
+        expect(caesar_finished).to be_finished(chars_array, word)
       end
     end
   end
@@ -73,7 +57,7 @@ describe CaesarCipher do
 
       it "returns full word" do
         full_word = caesar_loop.shift_loop("hello", 0)
-        expect(full_word).to eq("hello")
+        expect(full_word).to eq("HELLO")
       end
     end
   end
